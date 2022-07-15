@@ -2,12 +2,57 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    flex-basis: 15vh;
 }
 
 header > h1 {
     text-align: center;
+    margin-bottom: 15px;
+}
+
+article {
+    text-align: center;
+}
+
+article h2 {
+    margin-bottom: 5px;
+}
+
+article abbr {
+    text-decoration: none;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 5vh;
+    font-size: 18px;
+}
+
+footer span{
+    margin: 0 10px;
 }
 
 footer p {
     text-align: center;
 }
+
+.displayed-content, article {
+    width: 75vw;
+    margin: 0 auto;
+}
+
+.displayed-content{
+    flex-basis: 80vh;
+}
+
