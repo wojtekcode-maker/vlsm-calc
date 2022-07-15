@@ -5,5 +5,5 @@ export const vlsm = Router();
 
 vlsm
     .get('/', (req, res) => {
-        res.send('ok');
-    })
+        res.render('form/send-form');
+    });

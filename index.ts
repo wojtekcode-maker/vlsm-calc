@@ -7,6 +7,7 @@ const app = express();
 //Configure app
 app.use(expressStatic('public'));
 app.engine('.hbs', engine({
+    defaultLayout: 'main',
     extname: '.hbs',
 }));
 app.set('view engine', '.hbs');
