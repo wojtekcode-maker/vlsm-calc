@@ -1,58 +1,52 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: arial, sans-serif;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-    flex-basis: 15vh;
+  flex-basis: 15vh;
 }
-
 header > h1 {
-    text-align: center;
-    margin-bottom: 15px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+header article {
+  text-align: center;
+  width: 75vw;
+  margin: 0 auto;
+}
+header article h2 {
+  margin-bottom: 5px;
+}
+header article abbr {
+  text-decoration: none;
 }
 
-article {
-    text-align: center;
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 5vh;
+  font-size: 18px;
 }
-
-article h2 {
-    margin-bottom: 5px;
+footer span {
+  margin: 0 10px;
 }
-
-article abbr {
-    text-decoration: none;
-}
-
-footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-basis: 5vh;
-    font-size: 18px;
-}
-
-footer span{
-    margin: 0 10px;
-}
-
 footer p {
-    text-align: center;
+  text-align: center;
 }
 
-.displayed-content, article {
-    width: 75vw;
-    margin: 0 auto;
+.displayed-content {
+  width: 75vw;
+  margin: 0 auto;
+  flex-basis: 80vh;
 }
 
-.displayed-content{
-    flex-basis: 80vh;
-}
-
+/*# sourceMappingURL=style.css.map */
