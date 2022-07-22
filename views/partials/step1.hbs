@@ -1,0 +1,12 @@
+<form action="/step1" method="post">
+    <p>Step 1:</p>
+    <label for="address">
+        Write here your IP address with CIDR notation.
+    </label>
+    <input type="text" id="address" name="address" value="192.168.0.0/24">
+    <label for="subnets">
+        How many subnets do you want to get?
+    </label>
+    <input type="number" id="subnets" name="subnets" min="2" max="1024" value="2">
+    <input type="submit" value="Next step">
+</form>

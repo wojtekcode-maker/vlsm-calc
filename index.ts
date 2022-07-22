@@ -11,6 +11,9 @@ app.engine('.hbs', engine({
     extname: '.hbs',
 }));
 app.set('view engine', '.hbs');
+app.use(express.urlencoded({
+    extended: true
+}))
 
 
 //Routers
