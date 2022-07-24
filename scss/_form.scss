@@ -4,10 +4,13 @@ form {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  padding: 15px;
+  margin-top: 10vh;
   border: 1px solid black;
 
   label {
     display: block;
+    padding: 5px 10px;
   }
 
   button {
@@ -18,7 +21,22 @@ form {
 
   input {
     width: 50%;
-    margin: 0 auto;
     text-align: center;
+    padding: 5px;
+    margin: 0 auto 20px auto;
+  }
+
+  input[type="submit"], input[type="button"] {
+    width: 25%;
+    margin: 20px 10px 0 0;
+  }
+
+  input[value="Next step"] {
+    margin: 20px auto;
+  }
+
+  .flexed {
+    display: flex;
+    justify-content: center;
   }
 }

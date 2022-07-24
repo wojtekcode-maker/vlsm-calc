@@ -1,1 +1,7 @@
-{{> step1 }}
+{{#if url}}
+    {{> step2 }}
+{{else}}
+    {{> step1}}
+{{/if}}
+
+
