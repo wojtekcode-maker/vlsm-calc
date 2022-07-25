@@ -22,13 +22,11 @@ vlsm
             currentCalculation: string;
         }
         const receivedCookie: CookieObject | [] = currentCalculation ? new CookieObject(JSON.parse(currentCalculation)) : [];
-        console.log(receivedCookie);
 
         if (receivedCookie instanceof CookieObject) {
             res.render('form/send-form', {
                 url: receivedCookie.url,
                 subnetsAmount: receivedCookie.subnetsAmount,
-                //@TODO Display table with inputs subnetsAmount Times
             });
         } else {
             res.clearCookie('currentCalculation')

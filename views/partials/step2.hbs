@@ -6,7 +6,16 @@
             <th>Subnet name</th>
             <th>Host amount</th>
         </tr>
-        <!-- Each helper -->
+        {{#times subnetsAmount}}
+            <tr>
+                <td>
+                    <input type="text" name="host{{this}}" value="Host{{this}}">
+                </td>
+                <td>
+                    <input type="text" name="amount{{this}}">
+                </td>
+            </tr>
+        {{/times}}
     </table>
     <div class="flexed">
         <input type="button" onclick="location.href='/step1';" value="Back"/>
