@@ -1,6 +1,7 @@
 import {Router} from "express";
 import {CookieObject} from "../data-entity/cookie-object";
 import {Subnets} from "../types/data-entity";
+import {ValidationError} from "../utils/error";
 
 export const vlsm = Router();
 
@@ -50,10 +51,14 @@ vlsm
             const copyArray = [...receivedBodyArray];
             const [hostName, hostAmount] = ((copyArray.splice(spliceStart, spliceCount) as Array<string>));
 
-            subnets.push({
-                hostName: hostName,
-                hostAmount: Number(hostAmount),
-            })
+            if (typeof hostName === 'string' && typeof Number(hostAmount) === 'number' && Number(hostAmount) > 0 && Number(hostAmount) < 255) {
+                subnets.push({
+                    hostName: hostName,
+                    hostAmount: Number(hostAmount),
+                })
+            } else {
+                throw new ValidationError('The number of hosts entered is incorrect. Enter a number between 1-254.');
+            }
 
             if (spliceStart < (receivedBodyArray.length - 2)) {
                 orderingData(spliceStart + 2)
