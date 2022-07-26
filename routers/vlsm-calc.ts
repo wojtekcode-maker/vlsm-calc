@@ -63,7 +63,24 @@ vlsm
         }
         orderingData();
 
-        res.send('ok');
+        const {currentCalculation} = req.cookies as {
+            currentCalculation: string;
+        }
+
+        const receivedCookie: CookieObject | [] = currentCalculation ? new CookieObject(JSON.parse(currentCalculation)) : null;
+
+        const newCookie = new CookieObject({
+            id: receivedCookie.id,
+            url: req.originalUrl,
+            networkAddress: receivedCookie.networkAddress,
+            subnetsAmount: receivedCookie.subnetsAmount,
+            subnets: subnets,
+        });
+
+
+        res
+            .cookie('currentCalculation', JSON.stringify(newCookie))
+            .send('It works.')
     }))
     .get('*', ((req, res) => {
         res.redirect('/step1');

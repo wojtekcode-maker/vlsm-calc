@@ -24,8 +24,12 @@ export class CookieObject {
             this.subnetsAmount = obj.subnetsAmount;
             this.subnets = [];
         } else if
-        (obj.url === '/step2') {
-            this.subnets = obj.subnets
+        (obj.url === '/summary') {
+            this.id = uuid();
+            this.url = obj.url;
+            this.networkAddress = obj.networkAddress;
+            this.subnetsAmount = obj.subnetsAmount;
+            this.subnets = obj.subnets;
         } else {
             throw new ValidationError('The url is invalid.')
         }
