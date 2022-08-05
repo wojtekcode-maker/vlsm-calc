@@ -1,7 +1,5 @@
 import {Router} from "express";
 import {CookieObject} from "../data-entity/cookie-object";
-import {Subnets} from "../types/data-entity";
-import {ValidationError} from "../utils/error";
 
 export const vlsm = Router();
 
@@ -42,26 +40,34 @@ vlsm
         }
     }))
     .post('/summary', ((req, res) => {
-        const receivedBodyArray = Object.keys(req.body)
-            .map((key) => {
-                return req.body[key];
+        try {
+            const receivedBodyArray = Object.keys(req.body)
+                .map((key) => {
+                    return req.body[key];
+                });
+            const {currentCalculation} = req.cookies as {
+                currentCalculation: string;
+            }
+            const receivedCookie: CookieObject | [] = currentCalculation ? new CookieObject(JSON.parse(currentCalculation)) : null;
+
+            const newCookie = new CookieObject({
+                id: receivedCookie.id,
+                url: req.originalUrl,
+                networkAddress: receivedCookie.networkAddress,
+                subnetsAmount: receivedCookie.subnetsAmount,
+                subnets: receivedBodyArray,
             });
-        const {currentCalculation} = req.cookies as {
-            currentCalculation: string;
+
+            console.log(newCookie.calculation(newCookie.subnets, newCookie.networkAddress));
+
+            res
+                .cookie('currentCalculation', JSON.stringify(newCookie))
+                .send('It works.');
+        } catch (e) {
+            res.render('error', {
+                description: e,
+            })
         }
-        const receivedCookie: CookieObject | [] = currentCalculation ? new CookieObject(JSON.parse(currentCalculation)) : null;
-
-        const newCookie = new CookieObject({
-            id: receivedCookie.id,
-            url: req.originalUrl,
-            networkAddress: receivedCookie.networkAddress,
-            subnetsAmount: receivedCookie.subnetsAmount,
-            subnets: receivedBodyArray,
-        });
-
-        res
-            .cookie('currentCalculation', JSON.stringify(newCookie))
-            .send('It works.')
     }))
     .get('*', ((req, res) => {
         res.redirect('/step1');
