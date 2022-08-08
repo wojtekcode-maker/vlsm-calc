@@ -5,5 +5,14 @@ export const handlebarsHelpers = {
             accum += block.fn(i);
         }
         return accum;
+    },
+
+    dotted: (address: Array<number>, lastNumber: number) => {
+        if (typeof lastNumber === 'number'){
+            address[3] += lastNumber;
+        }
+        return address.reduce((prev: string, curr: number) => {
+            return `${prev}.${curr}`;
+        }, '').slice(1);
     }
 }

@@ -145,7 +145,6 @@ export class CookieObject {
             address[1] = 0;
             address[0]++;
         }
-
         return address;
     }
 
@@ -161,10 +160,9 @@ export class CookieObject {
             const slash = this._findSlash(subnet.hostAmount);
             const mask = this._findMask(slash);
             const address = this._findAddress(tempAddress, mask);
-            const broadcast = this._findBroadcast(mask, address);
             const hosts = this._findHosts(slash) + 2;
+            const broadcast = this._findBroadcast(mask, address);
             tempAddress = broadcast;
-            tempAddress = this._nextAddress(tempAddress);
             vlsm.push({
                 ...subnet,
                 slash: slash,
@@ -173,6 +171,7 @@ export class CookieObject {
                 broadcast: broadcast,
                 hostsRange: hosts,
             });
+            tempAddress = this._nextAddress(tempAddress);
         }
         return vlsm;
     }

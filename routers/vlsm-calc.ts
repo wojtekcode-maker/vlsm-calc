@@ -58,11 +58,12 @@ vlsm
                 subnets: receivedBodyArray,
             });
 
-            console.log(newCookie.calculation(newCookie.subnets, newCookie.networkAddress));
-
+            const result = newCookie.calculation(newCookie.subnets, newCookie.networkAddress);
             res
                 .cookie('currentCalculation', JSON.stringify(newCookie))
-                .send('It works.');
+                .render('summary', {
+                    result,
+                });
         } catch (e) {
             res.render('error', {
                 description: e,
