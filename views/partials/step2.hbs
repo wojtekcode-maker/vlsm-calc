@@ -1,0 +1,24 @@
+<form action="/summary" method="post">
+    <p>Step 2</p>
+    <p>Fill up the frames below.</p>
+    <table>
+        <tr>
+            <th>Subnet name</th>
+            <th>Host amount</th>
+        </tr>
+        {{#times subnetsAmount}}
+            <tr>
+                <td>
+                    <input type="text" name="host{{this}}" value="Host{{this}}">
+                </td>
+                <td>
+                    <input type="number" min="1" name="amount{{this}}" tabindex="{{this}}" required>
+                </td>
+            </tr>
+        {{/times}}
+    </table>
+    <div class="flexed">
+        <input type="button" onclick="location.href='/step1';" value="Back"/>
+        <input type="submit" value="Calculate!">
+    </div>
+</form>

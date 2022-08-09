@@ -1,0 +1,25 @@
+<h3>Result:</h3>
+<table class="summary">
+    <tr>
+        <th>Name</th>
+        <th>Your hosts</th>
+        <th>Host available</th>
+        <th>Network address</th>
+        <th>Slash</th>
+        <th>Mask</th>
+        <th>Hosts range</th>
+        <th>Broadcast address</th>
+    </tr>
+    {{#each result}}
+        <tr>
+            <td>{{hostName}}</td>
+            <td>{{hostAmount}}</td>
+            <td>{{hostsRange}}</td>
+            <td>{{dotted address}}</td>
+            <td>/{{slash}}</td>
+            <td>{{dotted mask}}</td>
+            <td>{{dotted address 1}} - {{dotted broadcast -2}}</td>
+            <td>{{dotted broadcast 1}}</td>
+        </tr>
+    {{/each}}
+</table>

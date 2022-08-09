@@ -1,14 +1,23 @@
 import express, {static as expressStatic} from "express";
-import {vlsm} from "./routers/vlsm-calc";
 import {engine} from "express-handlebars";
+import cookieParser from "cookie-parser";
+import {vlsm} from "./routers/vlsm-calc";
+import {handleError} from "./utils/error";
+import {handlebarsHelpers} from "./utils/handlebars-helpers";
 
 const app = express();
 
 //Configure app
+app.use(express.urlencoded({
+    extended: true
+}))
+app.use(cookieParser());
+app.use(handleError);
 app.use(expressStatic('public'));
 app.engine('.hbs', engine({
     defaultLayout: 'main',
     extname: '.hbs',
+    helpers: handlebarsHelpers,
 }));
 app.set('view engine', '.hbs');
 
