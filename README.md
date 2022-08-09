@@ -1,16 +1,16 @@
-#VLSM CALCULATOR APP.
+# VLSM CALCULATOR APP.
 ![My logo with project description](public/assets/shots/vlsm-calc.png)
 
-##Contents:
+## Contents:
 * [Introduction](#introduction)
 * [Technologies](#technologies)
 * [How to run](#how-to-run)
 * [Screenshots](#screenshots)
 
-##Introduction
+## Introduction
 The application was created to facilitate subnets sharing using the VLSM technique.
 
-##Technologies
+## Technologies
 Project is created with:
 * Express.js
 * Express Handlebars
@@ -18,14 +18,14 @@ Project is created with:
 * Cookie-parser
 * SCSS
 
-##How to run
+## How to run
 ```
 $ cd ../vlsm-calc-release
 $ npm install
 $ npm start
 ```
 
-##Screenshots
+## Screenshots
 * In first step user should provide IP addres with CIDR notation and amount of subnets which the user wants to receive.
 
 ![Step 1 of the VLSM Calculation form](public/assets/shots/step1.jpg)
