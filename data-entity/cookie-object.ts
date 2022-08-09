@@ -10,7 +10,7 @@ export class CookieObject {
     public subnets?: Array<Subnets>
 
     constructor(obj: CookieEntity) {
-        if (!(/^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}0\/(1[6-9]|2[0-9]|30)$/.test(obj.networkAddress))) {
+        if (!(/^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}0\/([8-9]|1[0-9]|2[0-9]|3[0-2])$/.test(obj.networkAddress))) {
             throw new ValidationError('Network address is incorrect!');
         }
         if (Number(obj.subnetsAmount) < 2 || Number(obj.subnetsAmount > 64)) {
@@ -130,12 +130,12 @@ export class CookieObject {
     }
 
     _nextAddress(address: Array<number>): Array<number> {
-        if (address[3] < 255) {
+        if (address[3] < 256) {
             address[3]++;
-        } else if (address[2] < 255) {
+        } else if (address[2] < 256) {
             address[3] = 0;
             address[2]++;
-        } else if (address[1] < 255) {
+        } else if (address[1] < 256) {
             address[3] = 0;
             address[2] = 0;
             address[1]++;
@@ -160,7 +160,7 @@ export class CookieObject {
             const slash = this._findSlash(subnet.hostAmount);
             const mask = this._findMask(slash);
             const address = this._findAddress(tempAddress, mask);
-            const hosts = this._findHosts(slash) + 2;
+            const hosts = this._findHosts(slash);
             const broadcast = this._findBroadcast(mask, address);
             tempAddress = broadcast;
             vlsm.push({
